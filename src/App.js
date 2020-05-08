@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import './App.css';
 
+import firebase from "./firebase";
+
 class App extends Component {
 
     constructor(props) {
@@ -25,8 +27,16 @@ class App extends Component {
     }
 
     createNewTodo = () => {
+        const db = firebase.firestore();
         let text = this.state.newItemText;
+
         if (this.isValidInputText(text) && !this.state.todoItems.find(item => item.action === text)) {
+            db.collection("react-to-watch-list").doc(text).set({
+                item: text,
+                done: false,
+                added: firebase.firestore.Timestamp.fromDate(new Date())
+            });
+
             this.setState({
                 todoItems: [...this.state.todoItems, {action: text, done: false}],
                 nextItemText: ""

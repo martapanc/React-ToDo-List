@@ -1,6 +1,7 @@
 {
   "hosting": {
     "public": "build",
+    "site": "to-watch-list-1217",
     "ignore": [
       "firebase.json",
       "**/.*",

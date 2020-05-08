@@ -20,10 +20,15 @@ class App extends Component {
         this.setState({newItemText: event.target.value});
     }
 
+    isValidInputText = (text) => {
+        return text !== undefined && text.trim() !== "";
+    }
+
     createNewTodo = () => {
-        if (!this.state.todoItems.find(item => item.action === this.state.newItemText)) {
+        let text = this.state.newItemText;
+        if (this.isValidInputText(text) && !this.state.todoItems.find(item => item.action === text)) {
             this.setState({
-                todoItems: [...this.state.todoItems, {action: this.state.newItemText, done: false}],
+                todoItems: [...this.state.todoItems, {action: text, done: false}],
                 nextItemText: ""
             });
         }

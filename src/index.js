@@ -5,8 +5,6 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.css';
 
-const admin = require('firebase-admin');
-admin.initializeApp();
 
 ReactDOM.render(
     <React.StrictMode>
